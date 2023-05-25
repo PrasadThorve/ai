@@ -1,0 +1,40 @@
+import nltk
+from nltk.chat.util import Chat,reflections
+
+paris=[
+    #
+    [
+        r"my name is (.)",
+        ["Hello %1, How are you"]
+    ],
+    # Or expression
+    [
+        r"Hi|Hello|Hey there|Hola",
+        ["My name is prasad"]
+    ],
+    [
+        r"what is your name ?",
+        ["I'm doing good How about you ?",]
+    ],
+    [
+        r"sorry(.*)",
+        ["its alright","Its Ok, never mind",]
+    ],
+    [
+        r"I am fine",
+        ["Great to here that","how can i help you?:)",]
+    ],
+    [
+        r"(.*) age?",
+        ["I'm a computer program dude seriously you are asking me this?",]
+    ],
+    
+]
+
+def chat():
+    print("Hey there! I am Prasad at your service.")
+    chat = Chat(paris)
+    chat.converse()
+
+if __name__=="__main__":
+    chat()

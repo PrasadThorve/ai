@@ -1,0 +1,46 @@
+def main():
+    node = int(input("Enter the number of node: "))
+#     graph = dict()
+    graph = {
+        0: [1,2,3],
+        1: [0,3],
+        2:[0,3,4],
+        3:[0,1,2,4],
+        4:[2,3]
+    }
+    visitedDfs = set()
+    visitedBfs = set()
+    queue = []
+    
+#     for i in range(node):
+#         edge = int(input(f"Enter the no of edges {i} node: "))
+#         graph[i]= list()
+#         for edg in range(edge):
+#             edge_node = int(input(f"Enter the edge {edg} for node {i}"))
+#             graph[i].append(edg)
+    print("Dfs: ")        
+    dfs(graph,0,visitedDfs)
+    
+    print("\nBFS: ")
+    bfs(graph,0,visitedBfs,queue)
+    
+
+def dfs(graph,start_node,visited):
+    if start_node not in visited:
+        visited.add(start_node)
+        print(start_node,end=" ")
+        for neighbour in graph[start_node]:
+            dfs(graph,neighbour,visited)
+
+def bfs(graph,start_node,visited,queue):
+    queue.append(start_node)
+    visited.add(start_node)
+    while queue:
+        curr = queue.pop(0)
+        print(curr,end=" ")
+        for neighbour in graph[curr]:
+            if neighbour not in visited:
+                queue.append(neighbour)
+                visited.add(neighbour)
+
+main()
